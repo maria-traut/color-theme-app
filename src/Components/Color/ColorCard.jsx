@@ -1,6 +1,6 @@
-import "./Color.css";
+import "./ColorCard.css";
 
-export default function Color({ color }) {
+export default function ColorCard({ color }) {
   return (
     <article className="colorcard" style={{ backgroundColor: color.hex }}>
       <p className="colorcard__value" style={{ color: color.contrastText }}>

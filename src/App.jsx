@@ -1,19 +1,17 @@
 import { initialColors } from "./lib/colors";
 import "./App.css";
-import Color from "./Components/Color/Color";
+import ColorCard from "./Components/Color/ColorCard";
 
 export default function App() {
-  const color = initialColors[0];
   return (
     <div>
       <h1>Theme Creator</h1>
-      <Color color={color}> </Color>
+      {initialColors.map((color) => (
+        <ColorCard key={color.id} color={color}></ColorCard>
+      ))}
     </div>
   );
 }
 
-/* {firstColor.colors.map((color) => (
-        <Color key={firstColor.id} color={firstColor.color}></Color>
-      ))}
-
-    */
+// variable for only showing one/first color -> const color = initialColors[0];
+// before mapping -> <ColorCard color={color}> </ColorCard>
