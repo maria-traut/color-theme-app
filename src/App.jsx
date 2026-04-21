@@ -1,14 +1,19 @@
 import { initialColors } from "./lib/colors";
-import Color from "./Components/Color/Color";
 import "./App.css";
+import Color from "./Components/Color/Color";
 
-function App() {
+export default function App() {
+  const color = initialColors[0];
   return (
-    <>
+    <div>
       <h1>Theme Creator</h1>
-      // display colors here
-    </>
+      <Color color={color}> </Color>
+    </div>
   );
 }
 
-export default App;
+/* {firstColor.colors.map((color) => (
+        <Color key={firstColor.id} color={firstColor.color}></Color>
+      ))}
+
+    */
