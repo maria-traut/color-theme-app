@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./ColorInput";
 
 export default function ColorInput({ id }) {
   const [inputValue, setInputValue] = useState("#5C6BC0");
