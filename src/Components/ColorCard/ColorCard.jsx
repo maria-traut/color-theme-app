@@ -1,7 +1,7 @@
 import "./ColorCard.css";
 import { useState } from "react";
 
-export default function ColorCard({ color, onDeleteColors }) {
+export default function ColorCard({ color, onDeleteColor }) {
   /* 3. introducing a state: https://react.dev/learn/reacting-to-input-with-state
   a. identify your component’s different visual states: only delete button || confirm message + cancel button + delete button
   b. determine what triggers those state changes: click on delete button || click on cancel button
@@ -27,7 +27,7 @@ export default function ColorCard({ color, onDeleteColors }) {
           <button type="button" onClick={() => setIsConfirmingDelete(false)}>
             CANCEL
           </button>
-          <button type="button" onClick={() => onDeleteColors(color)}>
+          <button type="button" onClick={() => onDeleteColor(color)}>
             DELETE
           </button>
         </div>
