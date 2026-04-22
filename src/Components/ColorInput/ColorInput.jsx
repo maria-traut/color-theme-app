@@ -16,7 +16,11 @@ export default function ColorInput({ id, defaultValue }) {
         value={inputValue}
         onChange={handleInputValue}
       />
-      <input type="color" value={inputValue} onChange={handleInputValue} />
+      <input
+        type="color"
+        /* input type:"color" creates color picker, wohoo */ value={inputValue}
+        onChange={handleInputValue}
+      />
     </>
   );
 }

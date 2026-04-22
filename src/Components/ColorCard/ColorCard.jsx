@@ -4,9 +4,9 @@ import { useState } from "react";
 export default function ColorCard({ color, onDeleteColors }) {
   /* 3. introducing a state: https://react.dev/learn/reacting-to-input-with-state
   a. identify your component’s different visual states: only delete button || confirm message + cancel button + delete button
-  b. determine what triggers those state changes: first click on delete button || second click on cancel button
+  b. determine what triggers those state changes: click on delete button || click on cancel button
   c. represent the state in memory using useState (isDeleting, isCancelling, isConfirmingDelete, isShownConfirmMessage. start with the state that absolutely must be there: delete button = inititalState)
-  d. remove any non-essential state variables
+  d. remove any non-essential state variables to avoid bugs and paradoxes
   e. connect the event handlers to set the state
   */
   const [isConfirmingDelete, setIsConfirmingDelete] = useState(false);
