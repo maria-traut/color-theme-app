@@ -49,7 +49,7 @@ export default function ColorForm({
           type="submit"
           aria-label="add color card"
         >
-          ADD COLOR
+         add color
         </button>
       </div>
     </form>
