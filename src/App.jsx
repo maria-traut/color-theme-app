@@ -8,20 +8,21 @@ import { useState } from "react";
 export default function App() {
   const [colors, setColors] = useState(initialColors);
 
-  function handleAddColors(newTheme) {
-    setColors([{ id: uid(), ...newTheme }, ...colors]);
+  function handleAddColors(newColor) {
+    setColors([{ id: uid(), ...newColor }, ...colors]);
+    console.log("this is the new color: " + newColor);
   }
 
   return (
     <div>
       <h1 className="app-headline">Theme Creator</h1>
       <ColorForm onAddColors={handleAddColors} />
-      {initialColors.map((color) => (
+      {colors.map((color) => (
         <ColorCard key={color.id} color={color}></ColorCard>
       ))}
     </div>
   );
 }
 
-// variable for showing one/first color -> const color = initialColors[0];
+// variable for showing one/first color of array -> const color = initialColors[0];
 // component before mapping -> <ColorCard color={color}> </ColorCard>
