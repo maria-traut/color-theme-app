@@ -3,7 +3,8 @@ body {
   padding: 10px;
 }
 
-.app-headline {
+.app-headline,
+.add-new-colors {
   margin: 0px 10px;
   padding: 5px;
 }

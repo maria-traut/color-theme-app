@@ -6,23 +6,39 @@ import { uid } from "uid";
 import { useState } from "react";
 
 export default function App() {
-  const [colors, setColors] = useState(initialColors);
+  // 1. variable for showing one/first color of array: const color = initialColors[0];
+  const [colors, setColors] = useState(initialColors); // 2.
 
-  function handleAddColors(newColor) {
+  // 2. adding new color cards (like journal entry form challenge)
+  function handleAddColor(newColor) {
     setColors([{ id: uid(), ...newColor }, ...colors]);
-    console.log("this is the new color: " + newColor);
+  }
+
+  // 3. deleting color cards (like tags, tags, tags challenge)
+  function handleDeleteColor(colorToDelete) {
+    const mutatedColors = colors.filter((color) => color !== colorToDelete);
+    setColors(mutatedColors);
   }
 
   return (
     <div>
       <h1 className="app-headline">Theme Creator</h1>
-      <ColorForm onAddColors={handleAddColors} />
-      {colors.map((color) => (
-        <ColorCard key={color.id} color={color}></ColorCard>
-      ))}
+      <ColorForm onAddColor={handleAddColor} /* 2. */ />
+      {colors.length === 0 ? ( // 3. https://stackoverflow.com/questions/55170713/react-how-to-show-message-if-there-is-no-records
+        <p className="add-new-colors">No colors ... start by adding one!</p>
+      ) : (
+        colors.map(
+          (
+            color, // 1. one color: <ColorCard color={color}> </ColorCard>; mapping colors: initialColors.map
+          ) => (
+            <ColorCard
+              key={color.id}
+              color={color}
+              onDeleteColor={handleDeleteColor}
+            />
+          ),
+        )
+      )}
     </div>
   );
 }
-
-// variable for showing one/first color of array -> const color = initialColors[0];
-// component before mapping -> <ColorCard color={color}> </ColorCard>

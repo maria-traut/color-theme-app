@@ -44,7 +44,13 @@ export default function ColorForm({
         </div>
       </div>
       <div className="color-form__button-wrapper">
-        <button type="submit">ADD COLOR</button>
+        <button
+          className="color-card__add-button"
+          type="submit"
+          aria-label="add color card"
+        >
+         add color
+        </button>
       </div>
     </form>
   );
