@@ -11,8 +11,8 @@ export default function ColorInput({ id, defaultValue }) {
     <>
       <input
         type="text"
-        id={id}
-        name={id}
+        id={id} // for f. e. id="hex" in input element
+        name={id} // for f. e. htmlFor="hex" in label element
         value={inputValue}
         onChange={handleInputValue}
       />

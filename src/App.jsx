@@ -24,16 +24,20 @@ export default function App() {
     <div>
       <h1 className="app-headline">Theme Creator</h1>
       <ColorForm onAddColors={handleAddColors} /* 2. */ />
-      {colors.map(
-        (
-          color /* 1. one color: <ColorCard color={color}> </ColorCard>; mapping colors: initialColors.map */,
-        ) => (
-          <ColorCard
-            key={color.id}
-            color={color}
-            onDeleteColors={handleDeleteColors} // 3.
-          ></ColorCard>
-        ),
+      {Array.isArray(colors) && colors.length === 0 ? ( // 3. // https://stackoverflow.com/questions/55170713/react-how-to-show-message-if-there-is-no-records
+        <p className="add-new-colors">No colors ... start by adding one!</p>
+      ) : (
+        colors.map(
+          (
+            color, // 1. one color: <ColorCard color={color}> </ColorCard>; mapping colors: initialColors.map
+          ) => (
+            <ColorCard
+              key={color.id}
+              color={color}
+              onDeleteColors={handleDeleteColors}
+            />
+          ),
+        )
       )}
     </div>
   );
