@@ -6,15 +6,15 @@ import { uid } from "uid";
 import { useState } from "react";
 
 export default function App() {
-  const [colors, setColors] = useState(initialColors);
+  // 1. variable for showing one/first color of array: const color = initialColors[0];
+  const [colors, setColors] = useState(initialColors); // 2.
 
-  // 1. adding new color cards
+  // 2. adding new color cards (like journal entry form challenge)
   function handleAddColors(newColor) {
     setColors([{ id: uid(), ...newColor }, ...colors]);
-    console.log("this is the new color: " + newColor);
   }
 
-  // 3. deleting color cards
+  // 3. deleting color cards (like tags, tags, tags challenge)
   function handleDeleteColors(colorToDelete) {
     const mutatedColors = colors.filter((color) => color !== colorToDelete);
     setColors(mutatedColors);
@@ -23,17 +23,18 @@ export default function App() {
   return (
     <div>
       <h1 className="app-headline">Theme Creator</h1>
-      <ColorForm onAddColors={handleAddColors} />
-      {colors.map((color) => (
-        <ColorCard
-          key={color.id}
-          color={color}
-          onDeleteColors={handleDeleteColors}
-        ></ColorCard>
-      ))}
+      <ColorForm onAddColors={handleAddColors} /* 2. */ />
+      {colors.map(
+        (
+          color /* 1. one color: <ColorCard color={color}> </ColorCard>; mapping colors: initialColors.map */,
+        ) => (
+          <ColorCard
+            key={color.id}
+            color={color}
+            onDeleteColors={handleDeleteColors} // 3.
+          ></ColorCard>
+        ),
+      )}
     </div>
   );
 }
-
-// variable for showing one/first color of array -> const color = initialColors[0];
-// component before mapping -> <ColorCard color={color}> </ColorCard>
