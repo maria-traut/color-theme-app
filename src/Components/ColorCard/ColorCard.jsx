@@ -24,21 +24,22 @@ export default function ColorCard({ color, onDeleteColor }) {
       {isConfirmingDelete ? ( //3. with confirm message and cancel button || line 24 - 34: if state isConfirmingDelete = true (user clicks delete button), user sees cancel and delete
         <div className="color-card__confirm">
           <p className="color-card__highlight">Really delete?</p>
-          <button type="button" onClick={() => setIsConfirmingDelete(false)}>
-            CANCEL
+          <button type="button" aria-label="cancel-button" onClick={() => setIsConfirmingDelete(false)}>
+            cancel
           </button>
-          <button type="button" onClick={() => onDeleteColor(color)}>
-            DELETE
+          <button type="button" aria-label="delete-button" onClick={() => onDeleteColor(color)}>
+            delete
           </button>
         </div>
       ) : (
         // 3. with confirm message and delete button || line 34 - 42: if state isConfirmingDelete = false (user does not click button), user sees delete button
         <button
           type="button"
+          aria-label="confirm-delete-button"
           className="color-card__delete-button"
           onClick={() => setIsConfirmingDelete(true)}
         >
-          DELETE
+          delete
         </button>
       )}
     </article>
