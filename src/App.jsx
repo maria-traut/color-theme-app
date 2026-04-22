@@ -8,9 +8,16 @@ import { useState } from "react";
 export default function App() {
   const [colors, setColors] = useState(initialColors);
 
+  // 1. adding new color cards
   function handleAddColors(newColor) {
     setColors([{ id: uid(), ...newColor }, ...colors]);
     console.log("this is the new color: " + newColor);
+  }
+
+  // 3. deleting color cards
+  function handleDeleteColors(colorToDelete) {
+    const mutatedColors = colors.filter((color) => color !== colorToDelete);
+    setColors(mutatedColors);
   }
 
   return (
@@ -18,7 +25,11 @@ export default function App() {
       <h1 className="app-headline">Theme Creator</h1>
       <ColorForm onAddColors={handleAddColors} />
       {colors.map((color) => (
-        <ColorCard key={color.id} color={color}></ColorCard>
+        <ColorCard
+          key={color.id}
+          color={color}
+          onDeleteColors={handleDeleteColors}
+        ></ColorCard>
       ))}
     </div>
   );
