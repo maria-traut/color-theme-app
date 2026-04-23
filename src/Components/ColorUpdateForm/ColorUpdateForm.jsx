@@ -1,9 +1,7 @@
-import "./ColorForm.css";
 import ColorInput from "../ColorInput/ColorInput";
+import "./ColorUpdateForm";
 
-// color form like entry form in journal app
-
-export default function ColorForm({
+export default function ColorUpdateForm({
   onAddColor,
   initialData = { role: "some color", hex: "#123456", contrastText: "#ffffff" },
 }) {
@@ -11,14 +9,15 @@ export default function ColorForm({
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    // console.log("getting data: " + data);
     onAddColor(data);
     event.target.reset();
   }
   return (
     <form className="color-form" onSubmit={handleSubmit}>
       <div className="color-form__field">
-        <label htmlFor="role">Role</label>
+        <label className="color-form__headline" htmlFor="role">
+          Role
+        </label>
         <div className="color-form__input-row">
           <input
             type="text"
@@ -45,11 +44,11 @@ export default function ColorForm({
       </div>
       <div className="color-form__button-wrapper">
         <button
-          className="color-card__add-button"
+          className="color-card__update-button"
           type="submit"
           aria-label="add color card"
         >
-          add color
+          update color
         </button>
       </div>
     </form>

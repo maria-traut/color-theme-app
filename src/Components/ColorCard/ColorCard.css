@@ -9,3 +9,9 @@
   background: black;
   color: white;
 }
+
+.color-card__delete-button,
+.color-card__cancel-button,
+.color-card__edit-button {
+  text-transform: uppercase;
+}
