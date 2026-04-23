@@ -1,10 +1,12 @@
 import ColorForm from "../ColorForm/ColorForm";
 import "./ColorCard.css";
 import { useState } from "react";
+import CopyToClipboard from "../CopyToClipboard/CopyToClipboard";
 
 export default function ColorCard({ color, onDeleteColor, onUpdateColor }) {
   const [isConfirmingDelete, setIsConfirmingDelete] = useState(false);
   const [isShowingColorForm, setIsShowingColorForm] = useState(false);
+
   // https://www.dhiwise.com/blog/design-converter/react-change-component-on-click-simple-guide-for-beginners
   return (
     <article
@@ -12,13 +14,7 @@ export default function ColorCard({ color, onDeleteColor, onUpdateColor }) {
       style={{ backgroundColor: color.hex, color: color.contrastText }}
     >
       <p className="color-card__highlight">{color.hex}</p>
-      <button
-        className="color-card__copy-button"
-        type="button"
-        aria-label="copy-hex-code-button"
-      >
-        copy
-      </button>
+      <CopyToClipboard text={color.hex} />
       <h3 className="color-card__role">{color.role}</h3>
       <p className="color-card__contrastText">contrast: {color.contrastText}</p>
 
@@ -29,6 +25,7 @@ export default function ColorCard({ color, onDeleteColor, onUpdateColor }) {
             initialData={color}
             buttonText="update color"
             onAddColor={(data) => onUpdateColor(color.id, data)}
+            onCloseForm={() => setIsShowingColorForm(false)}
           />
           <button
             type="button"
@@ -40,7 +37,7 @@ export default function ColorCard({ color, onDeleteColor, onUpdateColor }) {
           </button>
         </div>
       ) : (
-        // no ColorForm (edit button + delete button only)
+        // no ColorForm (edit button (+ delete) button only)
         <div>
           <button
             type="button"
@@ -72,7 +69,7 @@ export default function ColorCard({ color, onDeleteColor, onUpdateColor }) {
               </button>
             </div>
           ) : (
-            // no confirm message (default app status || edit button + delete button only)
+            // no confirm message (default app status || (edit button +) delete button only)
             <button
               type="button"
               aria-label="confirm-delete-button"
