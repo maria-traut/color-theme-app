@@ -1,10 +1,9 @@
-import ColorUpdateForm from "../ColorUpdateForm/ColorUpdateForm";
+import ColorForm from "../ColorForm/ColorForm";
 import "./ColorCard.css";
 import { useState } from "react";
 
-export default function ColorCard({ color, onDeleteColor }) {
+export default function ColorCard({ color, onDeleteColor, onUpdateColor }) {
   const [isConfirmingDelete, setIsConfirmingDelete] = useState(false);
-  // const [isUpdatingColor, setIsUpdatingColor] = useState(false);
   const [isShowingColorForm, setIsShowingColorForm] = useState(false);
   // https://www.dhiwise.com/blog/design-converter/react-change-component-on-click-simple-guide-for-beginners
   return (
@@ -16,9 +15,14 @@ export default function ColorCard({ color, onDeleteColor }) {
       <h3 className="color-card__role">{color.role}</h3>
       <p className="color-card__contrastText">contrast: {color.contrastText}</p>
 
-      {isShowingColorForm ? (
+      {isShowingColorForm ? ( // ColorForm
         <div className="color-card__update">
-          <ColorUpdateForm />
+          <ColorForm
+            id={color.id}
+            initialData={color}
+            buttonText="update color"
+            onAddColor={(data) => onUpdateColor(color.id, data)}
+          />
           <button
             type="button"
             aria-label="cancel-button"
@@ -29,47 +33,49 @@ export default function ColorCard({ color, onDeleteColor }) {
           </button>
         </div>
       ) : (
-        <button
-          type="button"
-          aria-label="edit-button"
-          className="color-card__edit-button"
-          onClick={() => setIsShowingColorForm(!isShowingColorForm)}
-        >
-          edit
-        </button>
-      )}
-      {/* button
-      // 3. delete button without confirm message: className="color-card__delete-button" type="button" aria-label="delete color card" onClick= curly, round, round, arrow onDeleteColors?.rount color round, curly */}
-      {isConfirmingDelete ? ( //3. with confirm message and cancel button || line 24 - 34: if state isConfirmingDelete = true (user clicks delete button), user sees cancel and delete
-        <div className="color-card__confirm">
-          <p className="color-card__highlight">Really delete?</p>
+        // no ColorForm (edit button + delete button only)
+        <div>
           <button
             type="button"
-            aria-label="cancel-button"
-            className="color-card__cancel-button"
-            onClick={() => setIsConfirmingDelete(false)}
+            aria-label="edit-button"
+            className="color-card__edit-button"
+            onClick={() => setIsShowingColorForm(!isShowingColorForm)}
           >
-            cancel
+            edit
           </button>
-          <button
-            type="button"
-            aria-label="delete-button"
-            className="color-card__delete-button"
-            onClick={() => onDeleteColor(color)}
-          >
-            delete
-          </button>
+
+          {isConfirmingDelete ? ( // confirm message
+            <div className="color-card__confirm">
+              <p className="color-card__highlight">Really delete?</p>
+              <button
+                type="button"
+                aria-label="cancel-button"
+                className="color-card__cancel-button"
+                onClick={() => setIsConfirmingDelete(false)}
+              >
+                cancel
+              </button>
+              <button
+                type="button"
+                aria-label="delete-button"
+                className="color-card__delete-button"
+                onClick={() => onDeleteColor(color)}
+              >
+                delete
+              </button>
+            </div>
+          ) : (
+            // no confirm message (default app status || edit button + delete button only)
+            <button
+              type="button"
+              aria-label="confirm-delete-button"
+              className="color-card__delete-button"
+              onClick={() => setIsConfirmingDelete(true)}
+            >
+              delete
+            </button>
+          )}
         </div>
-      ) : (
-        // 3. with confirm message and delete button || line 34 - 42: if state isConfirmingDelete = false (user does not click button), user sees delete button
-        <button
-          type="button"
-          aria-label="confirm-delete-button"
-          className="color-card__delete-button"
-          onClick={() => setIsConfirmingDelete(true)}
-        >
-          delete
-        </button>
       )}
     </article>
   );
