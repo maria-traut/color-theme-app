@@ -12,6 +12,13 @@ export default function ColorCard({ color, onDeleteColor, onUpdateColor }) {
       style={{ backgroundColor: color.hex, color: color.contrastText }}
     >
       <p className="color-card__highlight">{color.hex}</p>
+      <button
+        className="color-card__copy-button"
+        type="button"
+        aria-label="copy-hex-code-button"
+      >
+        copy
+      </button>
       <h3 className="color-card__role">{color.role}</h3>
       <p className="color-card__contrastText">contrast: {color.contrastText}</p>
 
