@@ -6,7 +6,7 @@ import ColorInput from "../ColorInput/ColorInput";
 export default function ColorForm({
   buttonText = "add color", // default
   onAddColor,
-  onCloseForm,
+
   initialData = { role: "some color", hex: "#123456", contrastText: "#ffffff" },
 }) {
   function handleSubmit(event) {
@@ -15,7 +15,6 @@ export default function ColorForm({
     const data = Object.fromEntries(formData);
 
     onAddColor(data);
-    onCloseForm();
 
     event.target.reset();
   }

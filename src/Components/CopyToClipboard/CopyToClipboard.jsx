@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function CopyToClipboard({ text }) {
   const [isConfirmingCopy, setIsConfirmingCopy] = useState(false);
@@ -12,6 +12,14 @@ export default function CopyToClipboard({ text }) {
     }
   }
   // console.log(text);
+
+  useEffect(() => {
+    if (!isConfirmingCopy) return;
+    const timeout = setTimeout(() => {
+      setIsConfirmingCopy(false);
+    }, 3000);
+    return () => clearTimeout(timeout); //cleanup function
+  }, [isConfirmingCopy]); // dependency array; useEffect is only running if isConfirmingCopy state changes
 
   return (
     <button

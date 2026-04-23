@@ -24,14 +24,16 @@ export default function ColorCard({ color, onDeleteColor, onUpdateColor }) {
             id={color.id}
             initialData={color}
             buttonText="update color"
-            onAddColor={(data) => onUpdateColor(color.id, data)}
-            onCloseForm={() => setIsShowingColorForm(false)}
+            onAddColor={(data) => {
+              onUpdateColor(color.id, data);
+              setIsShowingColorForm(false);
+            }}
           />
           <button
             type="button"
             aria-label="cancel-button"
             className="color-card__cancel-button"
-            onClick={() => setIsShowingColorForm(!isShowingColorForm)}
+            onClick={() => setIsShowingColorForm(false)}
           >
             cancel
           </button>
@@ -39,15 +41,6 @@ export default function ColorCard({ color, onDeleteColor, onUpdateColor }) {
       ) : (
         // no ColorForm (edit button (+ delete) button only)
         <div>
-          <button
-            type="button"
-            aria-label="edit-button"
-            className="color-card__edit-button"
-            onClick={() => setIsShowingColorForm(!isShowingColorForm)}
-          >
-            edit
-          </button>
-
           {isConfirmingDelete ? ( // confirm message
             <div className="color-card__confirm">
               <p className="color-card__highlight">Really delete?</p>
@@ -69,15 +62,25 @@ export default function ColorCard({ color, onDeleteColor, onUpdateColor }) {
               </button>
             </div>
           ) : (
-            // no confirm message (default app status || (edit button +) delete button only)
-            <button
-              type="button"
-              aria-label="confirm-delete-button"
-              className="color-card__delete-button"
-              onClick={() => setIsConfirmingDelete(true)}
-            >
-              delete
-            </button>
+            <>
+              {/* no confirm message (default app status || (edit button +) delete button only*/}
+              <button
+                type="button"
+                aria-label="confirm-delete-button"
+                className="color-card__delete-button"
+                onClick={() => setIsConfirmingDelete(true)}
+              >
+                delete
+              </button>
+              <button
+                type="button"
+                aria-label="edit-button"
+                className="color-card__edit-button"
+                onClick={() => setIsShowingColorForm(!isShowingColorForm)}
+              >
+                edit
+              </button>
+            </>
           )}
         </div>
       )}
