@@ -3,11 +3,13 @@ import ColorCard from "./Components/ColorCard/ColorCard";
 import ColorForm from "./Components/ColorForm/ColorForm";
 import { initialColors } from "./lib/colors";
 import { uid } from "uid";
-import { useState } from "react";
+import useLocalStorageState from "use-local-storage-state";
 
 export default function App() {
   // 1. variable for showing one/first color of array: const color = initialColors[0];
-  const [colors, setColors] = useState(initialColors); // 2.
+  const [colors, setColors] = useLocalStorageState("colors", {
+    defaultValue: initialColors,
+  }); // 2.
 
   // 2. adding new color cards (like journal entry form challenge)
   function handleAddColor(newColor) {
@@ -38,7 +40,7 @@ export default function App() {
 
         /* 2. */
       />
-      {colors.length === 0 ? ( // 3. https://stackoverflow.com/questions/55170713/react-how-to-show-message-if-there-is-no-records
+      {colors.length === 0 ? (
         <p className="add-new-colors">No colors ... start by adding one!</p>
       ) : (
         colors.map(
@@ -57,3 +59,5 @@ export default function App() {
     </div>
   );
 }
+
+// 3. https://stackoverflow.com/questions/55170713/react-how-to-show-message-if-there-is-no-records
