@@ -16,14 +16,28 @@ export default function App() {
 
   // 3. deleting color cards (like tags, tags, tags challenge)
   function handleDeleteColor(colorToDelete) {
-    const mutatedColors = colors.filter((color) => color !== colorToDelete);
+    const mutatedColors = colors.filter(
+      (color) => color.id !== colorToDelete.id,
+    );
     setColors(mutatedColors);
+  }
+
+  // 4. update color
+  function handleUpdateColor(id, newColor) {
+    // console.log(id, newColor);
+    const updatedColor = { ...newColor, id: id };
+    setColors(colors.map((color) => (color.id === id ? updatedColor : color)));
   }
 
   return (
     <div>
       <h1 className="app-headline">Theme Creator</h1>
-      <ColorForm onAddColor={handleAddColor} /* 2. */ />
+      <ColorForm
+        buttonText="add color"
+        onAddColor={handleAddColor}
+
+        /* 2. */
+      />
       {colors.length === 0 ? ( // 3. https://stackoverflow.com/questions/55170713/react-how-to-show-message-if-there-is-no-records
         <p className="add-new-colors">No colors ... start by adding one!</p>
       ) : (
@@ -35,6 +49,7 @@ export default function App() {
               key={color.id}
               color={color}
               onDeleteColor={handleDeleteColor}
+              onUpdateColor={handleUpdateColor}
             />
           ),
         )

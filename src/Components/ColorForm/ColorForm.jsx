@@ -4,15 +4,17 @@ import ColorInput from "../ColorInput/ColorInput";
 // color form like entry form in journal app
 
 export default function ColorForm({
-  onAddColors,
+  buttonText = "add color", // default
+  onAddColor,
   initialData = { role: "some color", hex: "#123456", contrastText: "#ffffff" },
 }) {
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    // console.log("getting data: " + data);
-    onAddColors(data);
+
+    onAddColor(data);
+
     event.target.reset();
   }
   return (
@@ -49,7 +51,7 @@ export default function ColorForm({
           type="submit"
           aria-label="add color card"
         >
-         add color
+          {buttonText}
         </button>
       </div>
     </form>
