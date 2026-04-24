@@ -1,9 +1,8 @@
 .color-card {
   margin: 15px 15px 0 10px;
-  padding: 5px;
-  border: 1px solid rgb(96, 74, 146);
+  padding: 10px;
+  box-shadow: 0 0 0 1px white;
   border-radius: 5px;
-  box-shadow: 4px 4px 6px #7b679c;
 }
 
 .color-card__highlight {
@@ -11,6 +10,7 @@
   padding: 2px 6px;
   background: black;
   color: white;
+  margin-right: 5px;
 }
 
 .color-card__delete-button,
@@ -21,7 +21,6 @@
   margin-right: 5px;
 }
 
-.color-card__copy-button {
-  text-transform: uppercase;
-  margin-left: 5px;
+.color-card__contrastCheck {
+  margin-bottom: 5px;
 }

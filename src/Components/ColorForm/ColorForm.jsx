@@ -13,6 +13,7 @@ export default function ColorForm({
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     onAddColor(data);
+    // handleContrastCheck(data);
     event.target.reset();
   }
 
