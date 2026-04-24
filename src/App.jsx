@@ -34,6 +34,34 @@ export default function App() {
   return (
     <div>
       <h1 className="app-headline">Theme Creator</h1>
+      <button
+        className="theme-creator__dropdown"
+        type="button"
+        aria-label="theme name"
+      >
+        default theme
+      </button>
+      <button
+        className="theme-creator__add-theme"
+        type="button"
+        aria-label="add-theme-button"
+      >
+        add
+      </button>
+      <button
+        className="theme-creator__edit-theme"
+        type="button"
+        aria-label="edit-theme-button"
+      >
+        edit
+      </button>
+      <button
+        className="theme-creator__delete-theme"
+        type="button"
+        aria-label="delete-theme-button"
+      >
+        delete
+      </button>
       <ColorForm buttonText="add color" onAddColor={handleAddColor} />
       {colors.length === 0 ? ( // 2.
         <p className="add-new-colors">No colors ... start by adding one!</p>
