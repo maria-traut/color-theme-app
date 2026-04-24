@@ -45,6 +45,12 @@ export default function ColorCard({ color, onDeleteColor, onUpdateColor }) {
     getContrastData();
   }, [color]);
 
+  const contrastColors = {
+    Yup: "rgb(152, 201, 152)",
+    Kinda: "#aa93fd",
+    Nope: "rgb(252, 151, 140)",
+  };
+
   return (
     <article
       className="color-card"
@@ -54,7 +60,12 @@ export default function ColorCard({ color, onDeleteColor, onUpdateColor }) {
       <CopyToClipboard text={color.hex} />
       <h3 className="color-card__role">{color.role}</h3>
       <p className="color-card__contrastText">contrast: {color.contrastText}</p>
-      <p className="color-card__contrastCheck">
+      <p
+        className="color-card__contrastCheck"
+        style={{
+          backgroundColor: contrastColors[isCheckingColorContrast] || "gray",
+        }}
+      >
         Overall Contrast Score: {isCheckingColorContrast}
       </p>
 
