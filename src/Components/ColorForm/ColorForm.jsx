@@ -6,22 +6,22 @@ import ColorInput from "../ColorInput/ColorInput";
 export default function ColorForm({
   buttonText = "add color", // default
   onAddColor,
-
   initialData = { role: "some color", hex: "#123456", contrastText: "#ffffff" },
 }) {
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-
     onAddColor(data);
-
     event.target.reset();
   }
+
   return (
     <form className="color-form" onSubmit={handleSubmit}>
       <div className="color-form__field">
-        <label htmlFor="role">Role</label>
+        <label className="color-form__label" htmlFor="role">
+          Role
+        </label>
         <div className="color-form__input-row">
           <input
             type="text"
@@ -32,13 +32,17 @@ export default function ColorForm({
         </div>
       </div>
       <div className="color-form__field">
-        <label htmlFor="hex">Hex</label>
+        <label className="color-form__label" htmlFor="hex">
+          Hex
+        </label>
         <div className="color-form__input-row">
           <ColorInput id="hex" defaultValue={initialData.hex} />
         </div>
       </div>
       <div className="color-form__field">
-        <label htmlFor="contrastText">Contrast Text</label>
+        <label className="color-form__label" htmlFor="contrastText">
+          Contrast Text
+        </label>
         <div className="color-form__input-row">
           <ColorInput
             id="contrastText"

@@ -1,6 +1,10 @@
 body {
   font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   padding: 10px;
+
+  background: linear-gradient(to bottom, #b062f0, #adb2fd, rgb(156, 241, 230));
+
+  background-color: #ff7e5f;
 }
 
 .add-new-colors {
@@ -10,4 +14,6 @@ body {
 
 .app-headline {
   margin: 0px 10px;
+  padding: 20px;
+  text-align: center;
 }

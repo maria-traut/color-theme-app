@@ -1,6 +1,9 @@
 .color-card {
   margin: 15px 15px 0 10px;
   padding: 5px;
+  border: 1px solid rgb(96, 74, 146);
+  border-radius: 5px;
+  box-shadow: 4px 4px 6px #7b679c;
 }
 
 .color-card__highlight {

@@ -7,6 +7,14 @@ export default function ColorCard({ color, onDeleteColor, onUpdateColor }) {
   const [isConfirmingDelete, setIsConfirmingDelete] = useState(false);
   const [isShowingColorForm, setIsShowingColorForm] = useState(false);
 
+  function handleConfirmingDelete(isConfirmingDelete) {
+    setIsConfirmingDelete(!isConfirmingDelete);
+  }
+
+  function handleShowingColorForm(isShowingColorForm) {
+    setIsShowingColorForm(!isShowingColorForm);
+  }
+
   // https://www.dhiwise.com/blog/design-converter/react-change-component-on-click-simple-guide-for-beginners
   return (
     <article
@@ -26,14 +34,14 @@ export default function ColorCard({ color, onDeleteColor, onUpdateColor }) {
             buttonText="update color"
             onAddColor={(data) => {
               onUpdateColor(color.id, data);
-              setIsShowingColorForm(false);
+              handleShowingColorForm(true);
             }}
           />
           <button
             type="button"
             aria-label="cancel-button"
             className="color-card__cancel-button"
-            onClick={() => setIsShowingColorForm(false)}
+            onClick={() => handleShowingColorForm(false)}
           >
             cancel
           </button>
@@ -48,7 +56,7 @@ export default function ColorCard({ color, onDeleteColor, onUpdateColor }) {
                 type="button"
                 aria-label="cancel-button"
                 className="color-card__cancel-button"
-                onClick={() => setIsConfirmingDelete(false)}
+                onClick={() => handleConfirmingDelete(true)}
               >
                 cancel
               </button>
@@ -68,7 +76,7 @@ export default function ColorCard({ color, onDeleteColor, onUpdateColor }) {
                 type="button"
                 aria-label="confirm-delete-button"
                 className="color-card__delete-button"
-                onClick={() => setIsConfirmingDelete(true)}
+                onClick={() => handleConfirmingDelete(false)}
               >
                 delete
               </button>
@@ -76,7 +84,7 @@ export default function ColorCard({ color, onDeleteColor, onUpdateColor }) {
                 type="button"
                 aria-label="edit-button"
                 className="color-card__edit-button"
-                onClick={() => setIsShowingColorForm(!isShowingColorForm)}
+                onClick={() => handleShowingColorForm(false)}
               >
                 edit
               </button>

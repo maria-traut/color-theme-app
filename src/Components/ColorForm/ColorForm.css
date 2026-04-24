@@ -18,3 +18,7 @@
   margin: 0px 10px;
   padding: 5px 0;
 }
+
+.color-form__label {
+  font-weight: 600;
+}
