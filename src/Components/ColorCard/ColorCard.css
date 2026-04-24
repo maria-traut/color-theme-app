@@ -12,6 +12,13 @@
 
 .color-card__delete-button,
 .color-card__cancel-button,
-.color-card__edit-button {
+.color-card__edit-button,
+.color-card__copy-button {
   text-transform: uppercase;
+  margin-right: 5px;
+}
+
+.color-card__copy-button {
+  text-transform: uppercase;
+  margin-left: 5px;
 }

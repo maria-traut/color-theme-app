@@ -24,7 +24,7 @@ export default function App() {
     setColors(mutatedColors);
   }
 
-  // 4. update color
+  // 4. updating color cards after editing one
   function handleUpdateColor(id, newColor) {
     // console.log(id, newColor);
     const updatedColor = { ...newColor, id: id };
@@ -34,27 +34,18 @@ export default function App() {
   return (
     <div>
       <h1 className="app-headline">Theme Creator</h1>
-      <ColorForm
-        buttonText="add color"
-        onAddColor={handleAddColor}
-
-        /* 2. */
-      />
-      {colors.length === 0 ? (
+      <ColorForm buttonText="add color" onAddColor={handleAddColor} />
+      {colors.length === 0 ? ( // 2.
         <p className="add-new-colors">No colors ... start by adding one!</p>
       ) : (
-        colors.map(
-          (
-            color, // 1. one color: <ColorCard color={color}> </ColorCard>; mapping colors: initialColors.map
-          ) => (
-            <ColorCard
-              key={color.id}
-              color={color}
-              onDeleteColor={handleDeleteColor}
-              onUpdateColor={handleUpdateColor}
-            />
-          ),
-        )
+        colors.map((color) => (
+          <ColorCard
+            key={color.id}
+            color={color}
+            onDeleteColor={handleDeleteColor}
+            onUpdateColor={handleUpdateColor}
+          />
+        ))
       )}
     </div>
   );
