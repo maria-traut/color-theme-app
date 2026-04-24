@@ -16,3 +16,22 @@ body {
   padding: 15px;
   text-align: center;
 }
+
+.theme-creator__dropdown {
+  margin: 0px 0px 0px 10px;
+  background-color: #9883e4;
+  border: 1px solid #6e60a1;
+}
+
+.theme-creator__add-theme {
+  margin: 0px 2px 0px 4px;
+  background-color: #9883e4;
+  border: 1px solid #6e60a1;
+}
+
+.theme-creator__edit-theme,
+.theme-creator__delete-theme {
+  margin: 0px 2px;
+  background-color: #9883e4;
+  border: 1px solid #6e60a1;
+}
