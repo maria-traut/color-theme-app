@@ -9,7 +9,7 @@ export default function App() {
   // 1. variable for showing one/first color of array: const color = initialColors[0];
   const [colors, setColors] = useLocalStorageState("colors", {
     defaultValue: initialColors,
-  }); // 2.
+  });
 
   // 2. adding new color cards (like journal entry form challenge)
   function handleAddColor(newColor) {
