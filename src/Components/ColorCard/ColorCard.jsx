@@ -47,8 +47,8 @@ export default function ColorCard({ color, onDeleteColor, onUpdateColor }) {
 
   const contrastColors = {
     Yup: "rgb(152, 201, 152)",
-    Kinda: "#aa93fd",
-    Nope: "rgb(252, 151, 140)",
+    Kinda: "#fce6a0",
+    Nope: "rgb(252, 140, 174)",
   };
 
   return (
