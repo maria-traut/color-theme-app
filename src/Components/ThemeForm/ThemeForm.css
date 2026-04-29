@@ -1,0 +1,19 @@
+.theme-form__field {
+  margin: 5px 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.theme-form__row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.theme-form__label {
+  font-weight: 600;
+}
+
+.theme-form__update-button {
+  text-transform: uppercase;
+}

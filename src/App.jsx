@@ -1,15 +1,20 @@
 import "./App.css";
+import ThemeForm from "./Components/ThemeForm/ThemeForm";
 import ColorCard from "./Components/ColorCard/ColorCard";
 import ColorForm from "./Components/ColorForm/ColorForm";
 import { initialColors } from "./lib/colors";
 import { uid } from "uid";
 import useLocalStorageState from "use-local-storage-state";
+import { useState } from "react";
 
 export default function App() {
   // 1. variable for showing one/first color of array: const color = initialColors[0];
   const [colors, setColors] = useLocalStorageState("colors", {
     defaultValue: initialColors,
   });
+
+  // 8.
+  const [isShowingThemeForm, setIsShowingThemeForm] = useState(false);
 
   // 2. adding new color cards (like journal entry form challenge)
   function handleAddColor(newColor) {
@@ -31,37 +36,66 @@ export default function App() {
     setColors(colors.map((color) => (color.id === id ? updatedColor : color)));
   }
 
+  // 8.
+  function handleShowingThemeForm(isShowingThemeForm) {
+    setIsShowingThemeForm(!isShowingThemeForm);
+  }
+
   return (
     <div>
       <h1 className="app-headline">Theme Creator</h1>
-      <button
-        className="theme-creator__dropdown"
-        type="button"
-        aria-label="theme name"
-      >
-        default theme
-      </button>
-      <button
-        className="theme-creator__add-theme"
-        type="button"
-        aria-label="add-theme-button"
-      >
-        add
-      </button>
-      <button
-        className="theme-creator__edit-theme"
-        type="button"
-        aria-label="edit-theme-button"
-      >
-        edit
-      </button>
-      <button
-        className="theme-creator__delete-theme"
-        type="button"
-        aria-label="delete-theme-button"
-      >
-        delete
-      </button>
+      {isShowingThemeForm ? ( //EditForm
+        <div className="theme-card__add">
+          <ThemeForm />
+          <button
+            type="button"
+            aria-label="cancel-button"
+            className="theme-form__cancel-button"
+            onClick={() => handleShowingThemeForm(true)}
+          >
+            cancel
+          </button>
+        </div>
+      ) : (
+        // no EditForm (default theme + add + edit + delete only)
+        <div>
+          <div className="theme-switcher">
+            <button
+              className="theme-creator__dropdown"
+              type="button"
+              aria-label="theme name"
+            >
+              Default Theme ▾
+            </button>
+            <div className="theme-dropdown">
+              <button data-theme="Default Theme">Default Theme</button>
+              <button data-theme="2nd Theme">2nd Theme</button>
+            </div>
+          </div>
+          <button
+            className="theme-creator__add-theme"
+            type="button"
+            aria-label="add-theme-button"
+          >
+            add
+          </button>
+          <button
+            className="theme-creator__edit-theme"
+            type="button"
+            aria-label="edit-theme-button"
+            onClick={() => handleShowingThemeForm(false)}
+          >
+            edit
+          </button>
+          <button
+            className="theme-creator__delete-theme"
+            type="button"
+            aria-label="delete-theme-button"
+          >
+            delete
+          </button>
+        </div>
+      )}
       <ColorForm buttonText="add color" onAddColor={handleAddColor} />
       {colors.length === 0 ? ( // 2.
         <p className="add-new-colors">No colors ... start by adding one!</p>
