@@ -23,7 +23,6 @@ body {
 }
 
 .theme-creator__dropdown {
-  text-transform: uppercase;
   margin: 0px 0px 0px 10px;
 }
 
@@ -36,4 +35,23 @@ body {
 .theme-creator__delete-theme {
   text-transform: uppercase;
   margin: 0px 2px;
+}
+
+.theme-form__cancel-button {
+  text-transform: uppercase;
+  margin: 0px 10px;
+}
+
+.theme-switcher {
+  position: relative;
+  display: inline-block;
+}
+
+.theme-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  background: white;
+  border: 1px solid #ccc;
 }
