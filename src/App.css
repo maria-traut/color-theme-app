@@ -2,7 +2,12 @@ body {
   font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   padding: 10px;
   min-height: 100vh;
-  background: linear-gradient(to bottom, #aa93fd, rgb(250, 182, 182));
+  background: linear-gradient(
+    to bottom,
+    rgb(252, 175, 124),
+    rgb(248, 94, 107),
+    #8a47f5
+  );
   background-color: #aa93fd;
 }
 
@@ -18,20 +23,17 @@ body {
 }
 
 .theme-creator__dropdown {
+  text-transform: uppercase;
   margin: 0px 0px 0px 10px;
-  background-color: #9883e4;
-  border: 1px solid #6e60a1;
 }
 
 .theme-creator__add-theme {
+  text-transform: uppercase;
   margin: 0px 2px 0px 4px;
-  background-color: #9883e4;
-  border: 1px solid #6e60a1;
 }
 
 .theme-creator__edit-theme,
 .theme-creator__delete-theme {
+  text-transform: uppercase;
   margin: 0px 2px;
-  background-color: #9883e4;
-  border: 1px solid #6e60a1;
 }
